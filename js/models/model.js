@@ -9,7 +9,9 @@ define([
     var Model = Backbone.Model.extend({
         defaults: {
             title: '',
-            completed: false
+            order: "",
+            path: "",
+            id : ""
         }
     });
 

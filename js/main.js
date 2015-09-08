@@ -47,10 +47,12 @@ require([
            });
        new Workspace(routes);
         Backbone.history.start();
+           Backbone.emulateHTTP = true;
+           Backbone.emulateJSON = true ;
         var firstStep = _.min(response, function(obj){ return +obj.order; });
-           var firstPage = require(["./js/" +firstStep.path]);
-           debugger;
-
+           var firstPage = require(["./js/" +firstStep.path] , function(view){
+              return view
+           });
 
     });
 
