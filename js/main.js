@@ -68,7 +68,7 @@ require([
                var currentPage = require(["tabs/" +window.location.hash.slice(1)] , function(View){
                    var view = new View;
                    var el = view.render();
-                   $("#main").html(el.el);
+                   $("#mainSec").html(el.el);
                });
            });
            if(!hash){
@@ -76,14 +76,14 @@ require([
                router.navigate(firstStep.id);
                var view = new View;
                var el = view.render();
-               $("#main").html(el.el);
+                   $("#mainSec").html(el.el);
            });
            }
            else {
                var currentPage = require(["tabs/" +hash.slice(1)] , function(View){
                    var view = new View;
                    var el = view.render();
-                   $("#main").html(el.el);
+                   $("#mainSec").html(el.el);
                });
            }
 

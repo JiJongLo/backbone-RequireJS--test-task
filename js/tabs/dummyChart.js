@@ -5,7 +5,8 @@ define([
     return Backbone.View.extend({
         id: "main",
         render: function() {
-            this.$el.html('<form role="form"><div class="form-group">'+
+            this.$el.html('<div class="row">'+
+                '<div class="col-md-6  col-lg-6"><form role="form"><div class="form-group">'+
                  '<label for="exampleInputEmail1">Email</label>'+
                 '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">'+
                '</div>'+
@@ -24,7 +25,7 @@ define([
             '</label>'+
             '</div>'+
              '<button type="submit" class="btn btn-default">Отправить </button>'
-                +'</form>');
+                +'</form></div></div>');
 
             return this
         }
