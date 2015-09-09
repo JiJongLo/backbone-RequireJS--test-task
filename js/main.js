@@ -43,7 +43,7 @@ require([
 
            var routes = {};
            var templateBtn = '';
-           var temp =  _.sortBy(response, function(obj){
+           var sortTabs =  _.sortBy(response, function(obj){
                return +obj.order
            });
 
@@ -53,18 +53,22 @@ require([
            });
        var router  = new Workspace(routes);
         Backbone.history.start();
-           Backbone.emulateHTTP = true;
-           Backbone.emulateJSON = true ;
         var firstStep = _.min(response, function(obj){ return +obj.order; });
-           _.each(temp, function(item){
+           _.each( sortTabs, function(item){
                templateBtn += '<button type="button" class="btn btn-primary">' + item.order + '</button>'
            });
-           $("footer>p").append(templateBtn);
+           $("footer p").append(templateBtn);
+           $("footer p").on("click", function(event){
+              console.log(event , Backbone, router);
+               var order = $(event.target).html();
+               var currentTabs = _.findWhere(sortTabs , {"order": order});
+               if(currentTabs) router.navigate(currentTabs.id);
+           });
            var firstPage = require(["./js/" +firstStep.path] , function(View){
                router.navigate(firstStep.id);
                var view = new View;
-               view.render();
-               //debugger;
+               var el = view.render();
+               $("#main").html(el.el);
            });
 
 
