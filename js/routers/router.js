@@ -15,7 +15,7 @@ define([
             });
         },
         open : function (action){
-            debugger;
+            console.log("My very first Backbone route");
         }
 
     });

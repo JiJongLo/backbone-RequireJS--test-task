@@ -42,17 +42,32 @@ require([
     }).done(function(response) {
 
            var routes = {};
-           _.each(response, function(item){
-               routes[item.id] = item.id
+           var templateBtn = '';
+           var temp =  _.sortBy(response, function(obj){
+               return +obj.order
            });
-       new Workspace(routes);
+
+           _.each(response, function(item){
+               routes[item.id] = item.id;
+
+           });
+       var router  = new Workspace(routes);
         Backbone.history.start();
            Backbone.emulateHTTP = true;
            Backbone.emulateJSON = true ;
         var firstStep = _.min(response, function(obj){ return +obj.order; });
-           var firstPage = require(["./js/" +firstStep.path] , function(view){
-              return view
+           _.each(temp, function(item){
+               templateBtn += '<button type="button" class="btn btn-primary">' + item.order + '</button>'
            });
+           $("footer>p").append(templateBtn);
+           var firstPage = require(["./js/" +firstStep.path] , function(View){
+               router.navigate(firstStep.id);
+               var view = new View;
+               view.render();
+               //debugger;
+           });
+
+
 
     });
 
