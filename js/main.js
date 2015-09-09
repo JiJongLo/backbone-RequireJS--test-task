@@ -59,17 +59,26 @@ require([
            });
            $("footer p").append(templateBtn);
            $("footer p").on("click", function(event){
-              console.log(event , Backbone, router);
                var order = $(event.target).html();
                var currentTabs = _.findWhere(sortTabs , {"order": order});
                if(currentTabs) router.navigate(currentTabs.id);
            });
-           var firstPage = require(["./js/" +firstStep.path] , function(View){
+           var hash = window.location.hash;
+           if(!hash){
+               var firstPage = require(["./js/" +firstStep.path] , function(View){
                router.navigate(firstStep.id);
                var view = new View;
                var el = view.render();
                $("#main").html(el.el);
            });
+           }
+           else {
+               var currentPage = require(["tabs/" +hash.slice(1)] , function(View){
+                   var view = new View;
+                   var el = view.render();
+                   $("#main").html(el.el);
+               });
+           }
 
 
 

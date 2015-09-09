@@ -10,7 +10,7 @@ define([
                 '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">'+
                '</div>'+
                 '<div class="form-group">'+
-                '<label for="exampleInputPassword1">Пароль</label>'+
+                '<label for="exampleInputPassword1">РџР°СЂРѕР»СЊ</label>'+
                 '<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">'+
                 '</div>'+
                 '<div class="form-group">'+
@@ -20,12 +20,12 @@ define([
             '</div>'+
             '<div class="checkbox">'+
                 '<label>'+
-                '<input type="checkbox"> Проверить меня'+
+                '<input type="checkbox"> РџСЂРѕРІРµСЂРёС‚СЊ РјРµРЅСЏ'+
             '</label>'+
             '</div>'+
-            +'<button type="submit" class="btn btn-default">Отправить</button>'+
+             '<button type="submit" class="btn btn-default">РћС‚РїСЂР°РІРёС‚СЊ </button>'
                 +'</form>');
-            $(".col-xs-12").append( this.$el );
+
             return this
         }
     })
