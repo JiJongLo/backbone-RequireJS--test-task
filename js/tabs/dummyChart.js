@@ -3,7 +3,6 @@ define([
     'backbone'
 ], function(Bakbone) {
     return Backbone.View.extend({
-        id: "main",
         render: function() {
             this.$el.html('<div class="row">'+
                 '<div class="col-md-6  col-lg-6"><form role="form"><div class="form-group">'+
