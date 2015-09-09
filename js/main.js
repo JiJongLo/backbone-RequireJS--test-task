@@ -61,9 +61,16 @@ require([
            $("footer p").on("click", function(event){
                var order = $(event.target).html();
                var currentTabs = _.findWhere(sortTabs , {"order": order});
-               if(currentTabs) router.navigate(currentTabs.id);
+               if(currentTabs) router.navigate(currentTabs.id , {trigger : true});
            });
            var hash = window.location.hash;
+           Backbone.history.on("all", function (route, router) {
+               var currentPage = require(["tabs/" +window.location.hash.slice(1)] , function(View){
+                   var view = new View;
+                   var el = view.render();
+                   $("#main").html(el.el);
+               });
+           });
            if(!hash){
                var firstPage = require(["./js/" +firstStep.path] , function(View){
                router.navigate(firstStep.id);
